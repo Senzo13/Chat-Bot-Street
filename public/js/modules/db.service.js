@@ -1,7 +1,7 @@
 export const getDataFromAPI = async () => {
   try {
     const response = await axios.get("http://localhost:3021/api/data");
-    const db = response.data.data;
+    const db = response.data;
     console.log("Base de données récupérée : ", db);
     return db;
   } catch (error) {

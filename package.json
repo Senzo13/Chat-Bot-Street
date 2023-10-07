@@ -16,8 +16,9 @@
   "scripts": {
     "obfuscate": "node obfuscate.js",
     "backup": "node js_backup.js",
+    "cleaner": "node cleaner.js",
     "start": "npm run obfuscate && nodemon src/server.js",
-    "dev": "nodemon --exec babel-node src/server.js"
+    "dev": "babel-node src/server.js"
   },
   "author": "",
   "license": "ISC",

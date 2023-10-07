@@ -7,6 +7,6 @@
       "~routes/*": ["routes/*"]
     }
   },
-  "include": ["src/**/*"],
+  "include": ["src/**/*", "cleaner.js"],
   "exclude": ["node_modules"]
 }
