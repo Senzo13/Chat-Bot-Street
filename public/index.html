@@ -22,24 +22,26 @@
     <title>ChatBot</title>
   </head>
   <body class="bg-[#444654] h-screen w-screen flex items-end">
-    <div class="left w-[12%] h-screen bg-[#202123]">
+    <div class="fixed z-10	 left w-[12%] h-screen bg-[#202123]">
       <p></p>
     </div>
     <div class="w-screen">
 
-      <div class="w-[100%] flex justify-center  items-center" id="container">
-          <div class="w-[100%] h-auto flex text-white flex-col" id="message">
+      <div id="containScroll" class="absolute w-screen top-0 h-[79vh] overflow-y-scroll border-[#444654]  flex flex-col-reverse">
+
+      <div class="w-full flex justify-center" id="container">
+        <div class="w-[100%] flex text-white flex-col" id="message">
             
         </div>
-        </div>
-
+      </div>
+    </div>
 
       <!-- PARTIT SECONDE AVEC INPUT ET BOUTON -->
-      <div class="bg-[#343541] h-60 p-2 flex justify-center items-end">
-        <div class="w-[100%] flex justify-center items-center mb-2">
+      <div class="bg-[#343541] h-[25vh] p-1 flex justify-center items-end pb-8">
+        <div class="w-[100%] flex justify-center items-center">
           <div class="bot relative w-[60%] flex justify-center items-center">
             <input
-              class="bg-[#40414F] p-6 rounded-md text-white w-full h-10 text-[#6B6C7B] resize-y"
+              class="input-bot bg-[#40414F] p-6 rounded-xl text-white w-full h-10 text-[#6B6C7B] resize-y"
               id="input-send"
               rows="3"
               autocomplete="off"
@@ -49,7 +51,7 @@
               name="play-outline"
               id="button-send"
             ></ion-icon>
-            <div id="loader" class="loader text-white mb-2 w-8 h-[70%] absolute right-0 m-2 cursor-pointer" style="background-color: transparent;">
+            <div id="loader" class="loader text-white mb-6 w-8 h-[70%] absolute right-0 m-2 cursor-pointer" style="background-color: transparent;">
               <span>.</span><span>.</span><span>.</span>
             </div>
           </div>

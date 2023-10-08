@@ -106,12 +106,13 @@ function createBotResponseElement(messageContent) {
   // Élément conteneur pour le message
 
   const messageBefore = document.createElement("div");
-  messageBefore.className = "w-[100%] h-auto flex items-center justify-center";
+  messageBefore.className =
+    "w-[100%] h-auto flex border-t-[0.5px] border-[#2a2b35] items-center justify-center";
   messageBefore.style.backgroundColor = "#444654"; // Si vous voulez la même couleur de fond
 
   const responseWrapper = document.createElement("div");
   responseWrapper.className =
-    "response w-[60%] h-auto p-4 flex items-center justify-start"; // Identique à celui de l'utilisateur
+    "response w-[60%] h-auto p-4	flex items-center justify-start"; // Identique à celui de l'utilisateur
 
   const avatar = document.createElement("img");
   avatar.src = "https://avatars.githubusercontent.com/u/52446531?v=4"; // Ajoutez l'URL de l'avatar si nécessaire
