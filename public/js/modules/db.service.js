@@ -4,7 +4,6 @@ export const getDataFromAPI = async () => {
       "http://chat-bot.lgiralt.com:3021/api/data"
     );
     const db = response.data;
-    console.log("Base de données récupérée : ", db);
     return db;
   } catch (error) {
     console.error(
@@ -48,7 +47,6 @@ export const searchDatabase = async (query) => {
       `http://chat-bot.lgiralt.com:3021/api/search?q=${query}`
     );
     const searchResults = response.data;
-    console.log("Résultats de la recherche : ", searchResults);
     return searchResults;
   } catch (error) {
     console.error(

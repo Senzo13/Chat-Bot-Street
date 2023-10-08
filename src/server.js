@@ -38,5 +38,5 @@ app.get("/", (req, res) => {
 app.use("/", router);
 
 app.listen(SERVER_PORT, () => {
-  console.log(`Server is running on https://${SERVER_HOSTNAME}:${SERVER_PORT}`);
+  console.log(`Server is running on http://${SERVER_HOSTNAME}:${SERVER_PORT}`);
 });

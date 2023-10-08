@@ -149,5 +149,6 @@ function typeMessage(element, message, index = 0) {
     iconElement.style.display = "block";
     loader.style.display = "none";
     textArea.disabled = false; // Réactive la zone de texte
+    textArea.focus(); // Focus sur la zone de texte
   }
 }

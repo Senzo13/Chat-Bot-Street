@@ -116,22 +116,29 @@ document.addEventListener("DOMContentLoaded", () => {
   // Ajouter d'autres logiques comme la sauvegarde des données si nécessaire.
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ... (le code existant pour la modal ici) ...
+const searchInput = document.getElementById("search-input");
+const searchButton = document.getElementById("search-btn");
 
-  const searchInput = document.getElementById("search-input");
-  const searchButton = document.getElementById("search-btn");
+// Cette fonction effectue la recherche lorsque l'utilisateur clique sur le bouton ou appuie sur "Entrée"
+const performSearch = async () => {
+  const searchTerm = searchInput.value.toLowerCase();
 
-  searchButton.addEventListener("click", async () => {
-    const searchTerm = searchInput.value.toLowerCase();
-
-    // Faites appel à la fonction searchDatabase pour rechercher dans la base de données
-    const searchResults = await searchDatabase(searchTerm).then((results) => {
-      console.log("Résultats de la recherche : ", results);
-      return results;
-    });
-
-    // Utilisez la fonction displayPage pour afficher les résultats
-    displayPage(searchResults);
+  // Faites appel à la fonction searchDatabase pour rechercher dans la base de données
+  const searchResults = await searchDatabase(searchTerm).then((results) => {
+    console.log("Résultats de la recherche : ", results);
+    return results;
   });
+
+  // Utilisez la fonction displayPage pour afficher les résultats
+  displayPage(searchResults);
+};
+
+// Gestionnaire de clic pour le bouton
+searchButton.addEventListener("click", performSearch);
+
+// Gestionnaire d'événement pour détecter la touche "Entrée" dans l'input
+searchInput.addEventListener("keyup", (event) => {
+  if (event.key === "Enter") {
+    performSearch();
+  }
 });
