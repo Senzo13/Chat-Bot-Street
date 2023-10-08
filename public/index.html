@@ -5,60 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
-    <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
-      rel="stylesheet"
-      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
-      crossorigin="anonymous"
-    />
+    <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios@0.21.4/dist/axios.min.js"></script>
-    <title>Document</title>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
+    <title>ChatBot</title>
   </head>
-  <body>
-    <section>
-      <div class="container py-5">
-        <div class="row d-flex justify-content-center">
-          <div class="col-md-8 col-lg-6 col-xl-4">
-            <div class="card" id="chat1" style="border-radius: 15px">
-              <div
-                class="card-header d-flex justify-content-between align-items-center p-3 bg-info text-white border-bottom-0"
-                id="customColor"
-                style="
-                  border-top-left-radius: 15px;
-                  border-top-right-radius: 15px;
-                  box-shadow: inset 0 0 500px rgba(57, 57, 56, 0.328),
-                    0 0 2em rgba(255, 0, 0, 0.061);
-                "
-              >
-                <i class="fas fa-angle-left"></i>
-                <p class="mb-0 fw-bold">Live chat avec le bot du quartier</p>
-                <i class="fas fa-times"></i>
-              </div>
-              <div class="card-body" id="container">
-                <div id="message"></div>
-              </div>
-              <div class="form-outline" style="background-color: #40414f">
-                <input
-                  class="form-control"
-                  id="textAreaExample"
-                  rows="3"
-                  style="background-color: #40414f"
-                />
-                <label class="form-label" for="textAreaExample" id="espace"
-                  >Ecris ton message</label
-                >
-                <input
-                  type="button"
-                  value="Envoyer"
-                  id="btnClick"
-                  class="btn btn-primary"
-                />
-              </div>
+  <body class="bg-[#444654] h-screen w-screen flex items-end">
+    <div class="left w-[12%] h-screen bg-[#202123]">
+      <p></p>
+    </div>
+    <div class="w-screen">
+
+      <div class="w-[100%] flex justify-center  items-center" id="container">
+          <div class="w-[100%] h-auto flex text-white flex-col" id="message">
+            
+        </div>
+        </div>
+
+
+      <!-- PARTIT SECONDE AVEC INPUT ET BOUTON -->
+      <div class="bg-[#343541] h-60 p-2 flex justify-center items-end">
+        <div class="w-[100%] flex justify-center items-center mb-2">
+          <div class="bot relative w-[60%] flex justify-center items-center">
+            <input
+              class="bg-[#40414F] p-6 rounded-md text-white w-full h-10 text-[#6B6C7B] resize-y"
+              id="input-send"
+              rows="3"
+              autocomplete="off"
+            ></input>
+            <ion-icon
+              class="text-[#6B6C7B] rounded-md w-8 h-[70%] bg-[#40414F] absolute right-0 m-2 cursor-pointer"
+              name="play-outline"
+              id="button-send"
+            ></ion-icon>
+            <div id="loader" class="loader text-white mb-4 rounded-md w-8 h-[70%] bg-[#40414F] absolute right-0 m-2 cursor-pointer">
+              <span>.</span><span>.</span><span>.</span>
             </div>
           </div>
-        </div>
+        </div>        
       </div>
-    </section>
+    </div>
   </body>
 
   <script src="./js/index.js" type="module"></script>

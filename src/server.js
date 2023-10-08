@@ -1,5 +1,6 @@
 import router from "~routes/data.routes";
 import express from "express";
+import cors from "cors";
 
 const app = express();
 const PORT = 3021;
@@ -9,6 +10,15 @@ app.use(express.json());
 
 // Servir les fichiers statiques de votre projet
 app.use(express.static("public"));
+
+// Autoriser les requêtes cross-origin
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  })
+);
 
 app.get("/", (req, res) => {
   res.send("Bonjour depuis Express avec ES6!");

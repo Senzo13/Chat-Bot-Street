@@ -1,6 +1,9 @@
 import { findBestResponse } from "./answerEngine.js";
 import { getDataFromAPI } from "./db.service.js";
 
+const textArea = document.getElementById("input-send"); // Récupère l'élément de saisie du message
+const iconElement = document.getElementById("button-send");
+const loader = document.getElementById("loader");
 let container = document.getElementById("container");
 let msg = document.getElementById("message");
 
@@ -9,40 +12,41 @@ const createMessageElement = (messageContent) => {
   console.log("Message à afficher : ", messageContent);
   // Élément conteneur pour le message
   const messageWrapper = document.createElement("div");
-  messageWrapper.className = "d-flex flex-row justify-content-start mb-4";
+  const messageBefore = document.createElement("div");
+  messageBefore.className = "w-[100%] h-auto flex items-center justify-center";
+  messageBefore.style.backgroundColor = "#343541";
+  messageWrapper.className =
+    "response w-[60%] h-auto p-4 flex items-center justify-start";
 
   // Crée une image pour l'utilisateur et une bulle pour le message
   const userImage = createUserImageElement();
   const messageBubble = createMessageBubbleElement(messageContent);
 
   // Ajoute l'image et la bulle au conteneur du message
+  messageBefore.appendChild(messageWrapper);
   messageWrapper.appendChild(userImage);
   messageWrapper.appendChild(messageBubble);
 
-  return messageWrapper;
+  return messageBefore;
 };
 
 // Crée une image pour l'utilisateur
 function createUserImageElement() {
   const userImage = document.createElement("img");
-  userImage.style.width = "45px";
-  userImage.style.height = "100%";
+  userImage.style.width = "25px";
+  userImage.style.height = "25px";
   userImage.src =
-    "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava1-bg.webp";
-
+    "https://www.eyedocs.co.uk/components/com_community/assets/user-anon.png";
   return userImage;
 }
 
 // Crée une bulle de texte pour le message
 function createMessageBubbleElement(content) {
   const messageBubble = document.createElement("div");
-  messageBubble.className = "p-3 ms-3";
-  messageBubble.style.borderRadius = "15px";
-  messageBubble.style.backgroundColor = "rgba(57, 192, 237,.2)";
+  messageBubble.className = "user-response m-0 pl-2 h-auto";
 
   // Crée le texte du message et l'ajoute à la bulle
   const messageText = document.createElement("p");
-  messageText.className = "small mb-0";
   messageText.textContent = content;
 
   messageBubble.appendChild(messageText);
@@ -52,7 +56,6 @@ function createMessageBubbleElement(content) {
 
 // Écrit le message sur la page et gère la réponse
 export const writeMessage = (message) => {
-  const textArea = document.getElementById("textAreaExample"); // Récupère l'élément de saisie du message
   const msgContainer = document.getElementById("message"); // Récupère le conteneur des messages
   const container = document.getElementById("container"); // Récupère le conteneur principal du chat
 
@@ -64,11 +67,11 @@ export const writeMessage = (message) => {
   container.scrollTop = container.scrollHeight; // Défile vers le bas pour montrer le dernier message
   textArea.value = ""; // Vide la zone de texte
 
+  iconElement.style.display = "none";
+  loader.style.display = "block";
   setTimeout(() => {
     handleSearchResponse(message); // Gère la réponse après un délai
-
-    textArea.disabled = false; // Réactive la zone de texte
-  }, 1500);
+  }, 5);
 
   //autoTrainWithLastAnswer(); // En cours de développement
 };
@@ -99,37 +102,51 @@ function handleSearchResponse(input) {
   });
 }
 
-function createBotResponseElement(message) {
-  // Création des éléments
+function createBotResponseElement(messageContent) {
+  // Élément conteneur pour le message
+
+  const messageBefore = document.createElement("div");
+  messageBefore.className = "w-[100%] h-auto flex items-center justify-center";
+  messageBefore.style.backgroundColor = "#444654"; // Si vous voulez la même couleur de fond
+
   const responseWrapper = document.createElement("div");
-  const messageBox = document.createElement("div");
+  responseWrapper.className =
+    "response w-[60%] h-auto p-4 flex items-center justify-start"; // Identique à celui de l'utilisateur
+
   const avatar = document.createElement("img");
+  avatar.src = "https://avatars.githubusercontent.com/u/52446531?v=4"; // Ajoutez l'URL de l'avatar si nécessaire
+  avatar.style.width = "25px";
+  avatar.style.height = "25px";
+
   const messageText = document.createElement("p");
+  messageText.className = "p-2 text-white rounded-md";
+  messageText.style.backgroundColor = "#444654";
+  // Ne pas définir innerHTML ici. Il sera défini lettre par lettre par la fonction typeMessage
 
-  // Configuration de l'avatar
-  avatar.src = "https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-chat/ava2-bg.webp";
-  avatar.style.width = "45px";
-  avatar.style.height = "100%";
+  responseWrapper.appendChild(avatar);
+  responseWrapper.appendChild(messageText);
 
-  // Configuration du texte du message
-  messageText.className = "small mb-0";
-  messageText.innerHTML = message;
+  messageBefore.appendChild(responseWrapper);
 
-  // Configuration de la boîte de message
-  messageBox.className = "p-3 me-3 border";
-  messageBox.style.borderRadius = "15px";
-  messageBox.style.backgroundColor = "#fbfbfb";
-  messageBox.appendChild(messageText); // Ajout du texte à la boîte de message
+  msg.appendChild(messageBefore);
 
-  // Configuration du conteneur principal
-  responseWrapper.className = "d-flex flex-row justify-content-end mb-4";
-  responseWrapper.appendChild(messageBox); // Ajout de la boîte de message au conteneur principal
-  responseWrapper.appendChild(avatar); // Ajout de l'avatar au conteneur principal
+  // Commence à taper le message une fois qu'il est ajouté au DOM
+  typeMessage(messageText, messageContent);
 
-  // Ajout du conteneur principal à l'élément 'msg' (qui doit être défini ailleurs dans votre code)
-  msg.appendChild(responseWrapper);
-
-  // Scrolling pour voir le dernier message
+  // Scrolling pour voir le dernier message (peut être déplacé à la fin de typeMessage pour le faire après avoir terminé de taper)
   container.scrollTop = container.scrollHeight;
 }
 
+function typeMessage(element, message, index = 0) {
+  if (index < message.length) {
+    element.innerHTML += message[index];
+    setTimeout(() => typeMessage(element, message, index + 1), 15); // 20ms entre chaque lettre
+  } else {
+    // Une fois que le message est complètement "tapé"
+    iconElement.style.color = "#6B6C7B";
+    iconElement.style.backgroundColor = "#40414F";
+    iconElement.style.display = "block";
+    loader.style.display = "none";
+    textArea.disabled = false; // Réactive la zone de texte
+  }
+}

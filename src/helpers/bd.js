@@ -5314,6 +5314,41 @@ export const config = {
         question: "yo le sang de la veine",
         answer: "wesh pépito",
       },
+      {
+        question: "cest quoi le html",
+        answer:
+          "html signifie hypertext markup language. cest le standard de codage utilisé pour créer et représenter des pages sur le web.",
+      },
+      {
+        question: "tu es qui",
+        answer:
+          "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
+      {
+        question: "t es qui",
+        answer:
+          "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
+      {
+        question: "t es quoi",
+        answer:
+          "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
+      {
+        question: "tu tappel comment",
+        answer:
+          "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
+      {
+        question: "tu tappel comment",
+        answer:
+          "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
+      {
+        question: "tu t appel comment",
+        answer:
+          "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
     ],
     logs: [
       {
