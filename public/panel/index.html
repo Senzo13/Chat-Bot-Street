@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="panel.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@0.21.4/dist/axios.min.js"></script>
+    <script
+      type="module"
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.esm.js"
+    ></script>
+    <script
+      nomodule
+      src="https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/ionic.js"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@ionic/core/css/ionic.bundle.css"
+    />
+    <title>Panneau d'administration</title>
+  </head>
+
+  <body class="bg-[#444654] h-auto w-screen">
+    <div class="w-full p-5">
+      <div class="bg-[#343541] p-5 rounded">
+        <h1 class="text-white text-2xl mb-5">Panneau d'administration</h1>
+        <!-- Barre de recherche -->
+        <div class="mb-5 flex">
+          <input
+            type="text"
+            id="search-input"
+            placeholder="Rechercher..."
+            class="search-input p-2 flex-grow rounded-l bg-[#202123] text-white"
+          />
+          <button
+            id="search-btn"
+            class="bg-[#ab68ff] hover:bg-blue-600 text-white py-2 px-4 rounded-r"
+          >
+            <ion-icon name="search-outline"></ion-icon>
+          </button>
+        </div>
+
+        <button
+          class="bg-[#ab68ff] hover:bg-blue-600 text-white py-2 px-4 rounded mb-5"
+          id="add-memory"
+        >
+          Ajouter une mémoire
+        </button>
+
+        <table class="min-w-full bg-[#202123] rounded-lg">
+          <thead>
+            <tr>
+              <th
+                class="py-2 px-4 border-b border-[#343541] bg-[#40414F] text-[#6B6C7B]"
+              >
+                Question
+              </th>
+              <th
+                class="py-2 px-4 border-b border-[#343541] bg-[#40414F] text-[#6B6C7B]"
+              >
+                Réponse
+              </th>
+              <th
+                class="py-2 px-4 border-b border-[#343541] bg-[#40414F] text-[#6B6C7B]"
+              >
+                Actions
+              </th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Faux data pour l'illustration -->
+            <tr class="bg-[#202123] hover:bg-[#343541]">
+              <td class="py-2 px-4 border-b border-[#343541] text-white">
+                Qu'est-ce que Tailwind ?
+              </td>
+              <td class="py-2 px-4 border-b border-[#343541] text-white">
+                Un framework CSS.
+              </td>
+              <td
+                class="py-2 px-4 border-b border-[#343541] flex justify-around"
+              >
+                <ion-icon
+                  name="create-outline"
+                  class="text-blue-500 hover:text-blue-600 cursor-pointer"
+                ></ion-icon>
+                <ion-icon
+                  name="trash-outline"
+                  class="text-red-500 hover:text-red-600 cursor-pointer"
+                ></ion-icon>
+              </td>
+            </tr>
+            <!-- Ajoutez plus de lignes ici si nécessaire -->
+          </tbody>
+        </table>
+      </div>
+    </div>
+    <!-- Pagination -->
+    <div class="mt-5 flex justify-center">
+      <button class="mx-1 py-1 px-3 bg-[#202123] text-white hover:bg-[#343541]">
+        1
+      </button>
+      <button class="mx-1 py-1 px-3 bg-[#202123] text-white hover:bg-[#343541]">
+        2
+      </button>
+      <!-- Ajoutez plus de boutons pour la pagination si nécessaire -->
+    </div>
+
+    <!-- Modal pour ajouter une mémoire -->
+    <ion-modal id="add-memory-modal">
+      <div class="bg-[#343541] p-5 rounded h-full">
+        <h2 class="text-white text-xl mb-5">Ajouter une mémoire</h2>
+
+        <form id="memory-form">
+          <div class="mb-4">
+            <label class="text-white mb-2" for="question">Question</label>
+            <input
+              type="text"
+              id="question"
+              class="p-2 w-full rounded"
+              placeholder="Entrez la question"
+              required
+            />
+          </div>
+
+          <div class="mb-4">
+            <label class="text-white mb-2" for="answer">Réponse</label>
+            <input
+              type="text"
+              id="answer"
+              class="p-2 w-full rounded"
+              placeholder="Entrez la réponse"
+              required
+            />
+          </div>
+
+          <button
+            id="add-memory-btn"
+            class="bg-[#ab68ff] hover:bg-blue-600 text-white py-2 px-4 rounded"
+          >
+            Ajouter
+          </button>
+        </form>
+
+        <button
+          id="close-modal"
+          class="bg-red-500 hover:bg-red-600 text-white py-2 px-4 rounded mt-4"
+        >
+          Fermer
+        </button>
+      </div>
+    </ion-modal>
+  </body>
+  <script src="./panel.js" type="module"></script>
+</html>

@@ -25,7 +25,7 @@ async function addLogs(logData) {
   }
 }
 
-async function addQuestionAndAnswer(questionData) {
+export const addQuestionAndAnswer = async (questionData) => {
   try {
     const response = await axios.post(
       "http://localhost:3021/api/questions/add",
@@ -38,12 +38,12 @@ async function addQuestionAndAnswer(questionData) {
       error
     );
   }
-}
+};
 
-async function searchDatabase(query) {
+export const searchDatabase = async (query) => {
   try {
     const response = await axios.get(
-      `http://localhost:3021/api/search?query=${query}`
+      `http://localhost:3021/api/search?q=${query}`
     );
     const searchResults = response.data;
     console.log("Résultats de la recherche : ", searchResults);
@@ -55,7 +55,7 @@ async function searchDatabase(query) {
     );
     throw error;
   }
-}
+};
 
 async function deleteEntry(entryId) {
   try {

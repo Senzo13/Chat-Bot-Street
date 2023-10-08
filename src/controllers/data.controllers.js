@@ -16,7 +16,9 @@ class DataController {
   search(req, res) {
     const query = formatInput(req.query.q);
     const matches = data.goodResponse.filter(
-      (item) => item.answer.includes(query) || item.question.includes(query)
+      (item) =>
+        item.answer.toLocaleLowerCase().includes(query.toLocaleLowerCase()) ||
+        item.question.toLocaleLowerCase().includes(query.toLocaleLowerCase())
     );
     res.send(matches);
   }

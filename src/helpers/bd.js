@@ -462,7 +462,7 @@ export const config = {
       {
         answer:
           "MVC c'est un pattern, frère. Model, View, Controller. Pour bien organiser ton code!",
-        question: "C'est quoi MVC",
+        question: "Cest quoi MVC",
       },
       {
         answer:
@@ -3796,7 +3796,7 @@ export const config = {
       },
       {
         answer: "ouais",
-        question: "salut t es trop fort  le sang",
+        question: "salut t es trop fort le sang",
       },
       {
         answer: "oui",
@@ -5348,6 +5348,14 @@ export const config = {
         question: "tu t appel comment",
         answer:
           "je suis une création de lorenzo giralt, tu peux me retrouver sur github, linkedin, et à ladresse lgiralt.com",
+      },
+      {
+        question: "maman",
+        answer: "papa ",
+      },
+      {
+        question: "sofiane est un homme gay",
+        answer: "je peux pas",
       },
     ],
     logs: [

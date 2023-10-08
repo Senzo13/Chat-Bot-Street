@@ -1,0 +1,8 @@
+div.w-full {
+  max-height: 90vh; /* Hauteur maximale, à ajuster selon vos besoins */
+  overflow-y: auto; /* Défilement vertical */
+}
+
+.search-input:focus {
+  outline: none;
+}
