@@ -1,6 +1,8 @@
 export const getDataFromAPI = async () => {
   try {
-    const response = await axios.get("http://localhost:3021/api/data");
+    const response = await axios.get(
+      "http://chat-bot.lgiralt.com:3021/api/data"
+    );
     const db = response.data;
     console.log("Base de données récupérée : ", db);
     return db;
@@ -16,7 +18,7 @@ export const getDataFromAPI = async () => {
 async function addLogs(logData) {
   try {
     const response = await axios.post(
-      "http://localhost:3021/api/logs/add",
+      "http://chat-bot.lgiralt.com:3021/api/logs/add",
       logData
     );
     console.log("Logs ajoutés avec succès : ", response.data);
@@ -28,7 +30,7 @@ async function addLogs(logData) {
 export const addQuestionAndAnswer = async (questionData) => {
   try {
     const response = await axios.post(
-      "http://localhost:3021/api/questions/add",
+      "http://chat-bot.lgiralt.com:3021/api/questions/add",
       questionData
     );
     console.log("Question et réponse ajoutées avec succès : ", response.data);
@@ -43,7 +45,7 @@ export const addQuestionAndAnswer = async (questionData) => {
 export const searchDatabase = async (query) => {
   try {
     const response = await axios.get(
-      `http://localhost:3021/api/search?q=${query}`
+      `http://chat-bot.lgiralt.com:3021/api/search?q=${query}`
     );
     const searchResults = response.data;
     console.log("Résultats de la recherche : ", searchResults);
@@ -60,7 +62,7 @@ export const searchDatabase = async (query) => {
 async function deleteEntry(entryId) {
   try {
     const response = await axios.delete(
-      `http://localhost:3021/api/delete/${entryId}`
+      `http://chat-bot.lgiralt.com:3021/api/delete/${entryId}`
     );
     console.log("Entrée supprimée avec succès : ", response.data);
   } catch (error) {
@@ -71,7 +73,7 @@ async function deleteEntry(entryId) {
 async function editEntry(entryId, newData) {
   try {
     const response = await axios.put(
-      `http://localhost:3021/api/edit/${entryId}`,
+      `http://chat-bot.lgiralt.com:3021/api/edit/${entryId}`,
       newData
     );
     console.log("Entrée éditée avec succès : ", response.data);
