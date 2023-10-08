@@ -3,7 +3,8 @@ import express from "express";
 import cors from "cors";
 
 const app = express();
-const PORT = 3021;
+const SERVER_PORT = 3021;
+const SERVER_HOSTNAME = "0.0.0.0";
 
 /* Permet de convertir les caractères spéciaux en caractères HTML pour éviter les failles XSS */
 app.use(express.json());
@@ -26,6 +27,6 @@ app.get("/", (req, res) => {
 
 app.use("/", router);
 
-app.listen(PORT, () => {
-  console.log(`Server is running on http://localhost:${PORT}`);
+app.listen(SERVER_PORT, () => {
+  console.log(`Server is running on http://${SERVER_HOSTNAME}:${SERVER_PORT}`);
 });
