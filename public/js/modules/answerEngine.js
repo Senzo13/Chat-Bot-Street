@@ -36,7 +36,7 @@ export const findBestResponse = (input, database) => {
         .split(""),
       cleanedInput.split("")
     )
-  );
+  ); 
 
   if (typoInsensitiveMatches.length > 0)
     return getRandomItem(typoInsensitiveMatches).answer;
