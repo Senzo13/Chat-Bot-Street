@@ -79,8 +79,17 @@ class DataController {
       return res.status(400).send("Question ou réponse manquante.");
     }
 
+    // Trouvez l'ID le plus élevé dans data.goodResponse
+    const highestId = data.goodResponse.reduce((maxId, item) => {
+      return item.id && item.id > maxId ? item.id : maxId;
+    }, 0);
+
+    // Incrémentez cet ID de 1
+    const newId = highestId + 1;
+
     // Ajoutez la nouvelle question et réponse à la copie en mémoire
     data.goodResponse.push({
+      id: newId,
       question: this.escapeForJSString(formatInput(question)),
       answer: this.escapeForJSString(formatInput(answer)),
     });

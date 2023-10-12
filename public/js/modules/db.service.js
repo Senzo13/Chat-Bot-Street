@@ -32,7 +32,7 @@ export const addQuestionAndAnswer = async (questionData) => {
       "http://chat-bot.lgiralt.com:3021/api/questions/add",
       questionData
     );
-    console.log("Question et réponse ajoutées avec succès : ", response.data);
+    return response;
   } catch (error) {
     console.error(
       "Erreur lors de l'ajout de la question et de la réponse : ",

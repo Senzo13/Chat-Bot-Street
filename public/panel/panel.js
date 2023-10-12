@@ -103,7 +103,7 @@ document.addEventListener("DOMContentLoaded", () => {
     };
 
     addQuestionAndAnswer(questionData).then((response) => {
-      console.log("Question et réponse ajoutées avec succès : ", response.data);
+      console.log("Question et réponse ajoutées avec succès : ", response);
       modal.dismiss();
     });
   });
