@@ -8,7 +8,7 @@
 
 Bienvenue dans le projet StreetTalk ChatBot !
 
-Contrairement aux solutions reposant sur l'intelligence artificielle, notre chatbot est alimenté uniquement par de l'algorithmie. Grâce à un algorithme de filtrage sophistiqué, il est capable de répondre même si la question exacte n'existe pas dans sa base de données. Sa capacité à engager des conversations de type "street" le rend unique.
+Contrairement aux solutions reposant sur l'intelligence artificielle, notre chatbot est alimenté uniquement par de l'algorithmie. Grâce à un algorithme de filtrage sophistiqué, il est capable de répondre même si la question exacte n'existe pas dans sa base de données. Sa capacité à engager des conversations de type "street" le rend unique !
 
 ## 🛠️ Technologie
 
